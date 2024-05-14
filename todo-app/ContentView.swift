@@ -37,6 +37,7 @@ struct ContentView: View {
                 .foregroundColor(Color.background)
                 .clipShape(.rect(cornerRadius: 8))
             }
+            .padding(.horizontal, 18)
             
             Spacer(minLength: 32)
             
@@ -54,10 +55,7 @@ struct ContentView: View {
                 .background(Color.background)
             }
             .listStyle(.plain)
-            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-            .listRowSpacing(12)
         }
-        .padding(30)
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
         .background(Color.background)
         .foregroundColor(Color.text)
