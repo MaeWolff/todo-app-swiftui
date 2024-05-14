@@ -8,11 +8,18 @@ struct TodoCard: View {
         let isCompleted: Bool = todo.status.rawValue == "completed"
         
         HStack() {
-            Circle()
-                .strokeBorder(Color.white)
-                .fill(isCompleted ? Color.outline : Color.background)
-                .frame(width: 32, height: 32)
-                .padding(.horizontal, 20)
+            ZStack {
+                Circle()
+                    .strokeBorder(Color.white)
+                    .fill(isCompleted ? Color.outline : Color.background)
+                    .frame(width: 32, height: 32)
+                    .padding(.horizontal, 20)
+                
+                if isCompleted {
+                    Image(systemName: "checkmark")
+                        .foregroundColor(Color.text.opacity(0.2))
+                }
+            }
             
             Text(todo.title)
                 .frame(maxWidth: .infinity, alignment: .leading)
