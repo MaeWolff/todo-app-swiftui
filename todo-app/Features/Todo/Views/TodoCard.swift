@@ -38,12 +38,3 @@ struct TodoCard: View {
         .contentShape(Rectangle())
     }
 }
-
-
-struct TodoCard_Previews: PreviewProvider {
-    static var previews: some View {
-        let todoViewModel = TodoViewModel()
-        ContentView(todoViewModel: todoViewModel)
-    }
-}
-
