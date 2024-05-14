@@ -2,34 +2,41 @@ import SwiftUI
 
 struct TodoCard: View {
     var todo: Todo
-    
+    var toggleStatus: () -> Void
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            StatusIndicator(status: todo.status)
-            Text(todo.title).font(.title3)
+        let isCompleted: Bool = todo.status.rawValue == "completed"
+        
+        HStack() {
+            Circle()
+                .strokeBorder(Color.white)
+                .fill(isCompleted ? Color.outline : Color.background)
+                .frame(width: 32, height: 32)
+                .padding(.horizontal, 20)
+            
+            Text(todo.title)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.vertical, 24)
+                .strikethrough(isCompleted)
+                .foregroundColor(isCompleted ? Color.text.opacity(0.2) : Color.text)
         }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(8)
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.outline)
+        )
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .onTapGesture {
+            toggleStatus()
+        }
+        .contentShape(Rectangle())
     }
 }
 
-struct StatusIndicator: View {
-    var status: TodoStatus
-    
-    var body: some View {
-        let backgroundColor: Color = {
-            switch status {
-            case .completed: Color.green
-            case .pending: Color.orange
-            }
-        }()
-        
-        Text(status == .completed ? "completed" : "pending")
-            .font(.footnote)
-            .foregroundColor(Color.white)
-            .padding(8)
-            .background(backgroundColor)
-            .clipShape(Capsule())
+
+struct TodoCard_Previews: PreviewProvider {
+    static var previews: some View {
+        let todoViewModel = TodoViewModel()
+        ContentView(todoViewModel: todoViewModel)
     }
 }
+

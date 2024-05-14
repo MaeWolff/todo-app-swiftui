@@ -6,23 +6,61 @@ struct ContentView: View {
     
 
     var body: some View {
-        NavigationView {
-            List {
-                HStack {
+        VStack {
+            Text("Daily Todo's")
+                .font(.title)
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+            
+            Spacer(minLength: 40)
+            
+            // Input to add new todo
+            HStack {
+                ZStack {
                     TextField("New todo", text: $newTodoTitle)
-                    Button(action: {
-                        self.addTodo()
-                    }) {
-                        Text("Add")
-                    }
+                        .padding(20)
                 }
-                ForEach(todoViewModel.todos) { todo in
-                    TodoCard(todo: todo)
-                }.onDelete(perform: todoViewModel.delete)
+                .frame(height: 60)
+                .foregroundColor(Color.text)
+                .clipShape(.rect(cornerRadius: 8))
+                .font(.title2)
+                .overlay(RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.outline))
+      
+                
+                Button("Add") {
+                    self.addTodo()
+                }
+                .frame(height: 60)
+                .frame(width: 100)
+                .font(.title2)
+                .background(Color.one)
+                .foregroundColor(Color.background)
+                .clipShape(.rect(cornerRadius: 8))
             }
+            
+            Spacer(minLength: 32)
+            
+            // Todo list
+            NavigationView {
+                List {
+                    ForEach(todoViewModel.todos) { todo in
+                        TodoCard(todo: todo) {
+                            todoViewModel.toggleStatus(todo: todo)
+                        }
+                    }
+                    .onDelete(perform: todoViewModel.delete)
+                    .listRowBackground(Color.background)
+                }
+                .background(Color.background)
+            }
+            .listStyle(.plain)
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             .listRowSpacing(12)
-            .navigationBarTitle("ToDo List")
         }
+        .padding(30)
+        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+        .background(Color.background)
+        .foregroundColor(Color.text)
     }
     
     func addTodo() {
@@ -32,6 +70,7 @@ struct ContentView: View {
         todoViewModel.add(title: newTodoTitle)
         newTodoTitle = ""
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

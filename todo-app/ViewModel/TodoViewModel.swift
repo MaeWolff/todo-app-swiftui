@@ -2,7 +2,8 @@ import Foundation
 
 class TodoViewModel: ObservableObject {
     @Published var todos: [Todo] = [
-        Todo(title: "Create Todo App with SwiftUI", status: .completed)
+        Todo(title: "Learn React Native", status: .completed),
+        Todo(title: "Create todo app", status: .pending)
     ]
     
     func add(title: String) {
@@ -13,4 +14,10 @@ class TodoViewModel: ObservableObject {
     func delete(at offsets: IndexSet) {
         todos.remove(atOffsets: offsets)
     }
+    
+    func toggleStatus(todo: Todo) {
+         if let index = todos.firstIndex(where: { $0.id == todo.id }) {
+             todos[index].status = (todos[index].status == .pending) ? .completed : .pending
+         }
+     }
 }
