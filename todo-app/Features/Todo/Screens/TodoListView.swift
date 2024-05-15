@@ -17,7 +17,7 @@ struct TodoListView: View {
                 .font(.title)
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
             
-            Spacer(minLength: 40)
+            Spacer(minLength: 24)
             
             // Input to add new todo
             HStack {
@@ -29,7 +29,7 @@ struct TodoListView: View {
                 .foregroundColor(Color.text)
                 .clipShape(.rect(cornerRadius: 8))
                 .font(.title2)
-                .overlay(RoundedRectangle(cornerRadius: 8)
+                .background(RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.outline))
       
                 
@@ -42,6 +42,11 @@ struct TodoListView: View {
                 .background(Color.one)
                 .foregroundColor(Color.background)
                 .clipShape(.rect(cornerRadius: 8))
+                .shadow(color: Color.text, radius: 0, x: 4, y: 4)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.text, lineWidth: 2)
+                )
             }
             .padding(.horizontal, 18)
             
@@ -58,6 +63,7 @@ struct TodoListView: View {
                     .onDelete(perform: todoViewModel.delete)
                     .listRowBackground(Color.background)
                 }
+                .listRowSpacing(12)
                 .background(Color.background)
             }
             .listStyle(.plain)
