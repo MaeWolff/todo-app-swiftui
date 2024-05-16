@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9660DF852BF6AA58001478D0 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9660DF842BF6AA58001478D0 /* StorageManager.swift */; };
 		968871AE2BEFBD6B00C29C6C /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968871AD2BEFBD6B00C29C6C /* Todo.swift */; };
 		968871B12BEFBE5F00C29C6C /* TodoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968871B02BEFBE5F00C29C6C /* TodoCard.swift */; };
 		968871B42BEFD0F600C29C6C /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968871B32BEFD0F600C29C6C /* TodoViewModel.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9660DF842BF6AA58001478D0 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		968871AD2BEFBD6B00C29C6C /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		968871B02BEFBE5F00C29C6C /* TodoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCard.swift; sourceTree = "<group>"; };
 		968871B32BEFD0F600C29C6C /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
@@ -42,6 +44,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9660DF832BF6AA33001478D0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9660DF842BF6AA58001478D0 /* StorageManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		968871BE2BF3E04E00C29C6C /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +130,7 @@
 		969F5A5A2BDB1C8C00D3A1FA /* todo-app */ = {
 			isa = PBXGroup;
 			children = (
+				9660DF832BF6AA33001478D0 /* Utilities */,
 				968871BF2BF3E06900C29C6C /* Features */,
 				968871BE2BF3E04E00C29C6C /* Config */,
 				969F5A5B2BDB1C8C00D3A1FA /* todoApp.swift */,
@@ -213,6 +224,7 @@
 				968871C92BF3E1A100C29C6C /* TodoListView.swift in Sources */,
 				968871AE2BEFBD6B00C29C6C /* Todo.swift in Sources */,
 				968871B12BEFBE5F00C29C6C /* TodoCard.swift in Sources */,
+				9660DF852BF6AA58001478D0 /* StorageManager.swift in Sources */,
 				968871B42BEFD0F600C29C6C /* TodoViewModel.swift in Sources */,
 				969F5A5C2BDB1C8C00D3A1FA /* todoApp.swift in Sources */,
 			);

@@ -7,22 +7,16 @@ class TodoViewModel: ObservableObject {
         self.todos = getAllTodos()
     }
     
-    
-    func getAllTodos() ->[Todo] {
-        if let todosData = UserDefaults.standard.object(forKey: "todos") as? Data {
-            if let todos = try? JSONDecoder().decode([Todo].self, from: todosData){
-                return todos
-            }
+    func getAllTodos() -> [Todo] {
+        if let savedTodos: [Todo] = StorageManager.load(forKey: "todos", as: [Todo].self) {
+            return savedTodos
         }
         return []
     }
     
     func saveTodos() {
-         if let encoded = try? JSONEncoder().encode(todos) {
-             UserDefaults.standard.set(encoded, forKey: "todos")
-         }
-     }
-
+        StorageManager.save(object: todos, forKey: "todos")
+    }
     
     func add(title: String) {
         let newTodo = Todo(title: title, isCompleted: false)
@@ -36,9 +30,9 @@ class TodoViewModel: ObservableObject {
     }
     
     func toggleStatus(todo: Todo) {
-         if let index = todos.firstIndex(where: { $0.id == todo.id }) {
-             todos[index].isCompleted.toggle()
-             saveTodos()
-         }
-     }
+        if let index = todos.firstIndex(where: { $0.id == todo.id }) {
+            todos[index].isCompleted.toggle()
+            saveTodos()
+        }
+    }
 }
