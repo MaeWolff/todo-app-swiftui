@@ -1,12 +1,13 @@
 import Foundation
 
-enum TodoStatus: String {
-    case pending
-    case completed
-}
-
-struct Todo: Identifiable {
-    let id: UUID = UUID()
+struct Todo: Identifiable, Codable {
+    let id: UUID
     let title: String
-    var status: TodoStatus = .pending
+    var isCompleted: Bool
+    
+    init(title: String, isCompleted: Bool = false) {
+        self.id = UUID()
+        self.title = title
+        self.isCompleted = false
+    }
 }

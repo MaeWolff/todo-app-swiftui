@@ -1,10 +1,3 @@
-//
-//  TodoView.swift
-//  todo-app
-//
-//  Created by Maxence Wolff on 14/05/2024.
-//
-
 import SwiftUI
 
 struct TodoListView: View {

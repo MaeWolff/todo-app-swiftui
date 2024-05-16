@@ -5,17 +5,15 @@ struct TodoCard: View {
     var toggleStatus: () -> Void
 
     var body: some View {
-        let isCompleted: Bool = todo.status.rawValue == "completed"
-        
         HStack() {
             ZStack {
                 Circle()
                     .stroke(Color.text, lineWidth: 2)
-                    .fill(isCompleted ? Color.one : Color.background)
+                    .fill(todo.isCompleted ? Color.one : Color.background)
                     .frame(width: 32, height: 32)
                     .padding(.horizontal, 20)
                 
-                if isCompleted {
+                if todo.isCompleted {
                     Image(systemName: "checkmark")
                         .foregroundColor(Color.text)
                 }
@@ -24,7 +22,7 @@ struct TodoCard: View {
             Text(todo.title)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 24)
-                .strikethrough(isCompleted)
+                .strikethrough(todo.isCompleted)
                 .foregroundColor(Color.text)
         }
         .background(
@@ -41,7 +39,7 @@ struct TodoCard: View {
             toggleStatus()
         }
         .contentShape(Rectangle())
-        .opacity(isCompleted ? 0.5 : 1)
+        .opacity(todo.isCompleted ? 0.5 : 1)
        
     }
         
