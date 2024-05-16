@@ -8,14 +8,14 @@ class TodoViewModel: ObservableObject {
     }
     
     func getAllTodos() -> [Todo] {
-        if let savedTodos: [Todo] = StorageManager.load(forKey: "todos", as: [Todo].self) {
+        if let savedTodos: [Todo] = StorageManager.load(forKey: StorageKeys.todos, as: [Todo].self) {
             return savedTodos
         }
         return []
     }
     
     func saveTodos() {
-        StorageManager.save(object: todos, forKey: "todos")
+        StorageManager.save(object: todos, forKey: StorageKeys.todos)
     }
     
     func add(title: String) {

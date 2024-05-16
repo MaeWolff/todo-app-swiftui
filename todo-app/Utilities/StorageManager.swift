@@ -1,5 +1,9 @@
 import Foundation
 
+struct StorageKeys {
+    static let todos = "todos"
+}
+
 class StorageManager {
     static func save<T: Encodable>(object: T, forKey key: String) {
         do {
